@@ -1,0 +1,41 @@
+<!-- Preconnect to Shopify CDN -->
+  <link rel="preconnect" href="https://cdn.shopify.com">
+  <link rel="dns-prefetch" href="https://cdn.shopify.com">
+
+  <!-- Shopify-Hosted Font -->
+  <style>
+    {{ "Roboto" | font_face: font_display: 'swap' }}
+  </style>
+
+  <!-- Defer render-blocking JavaScript -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var script = document.createElement("script");
+      script.src = "https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXX-X";
+      script.async = true;
+      document.head.appendChild(script);
+    });
+  </script>
+
+  <!-- Minify inline CSS -->
+  <style>
+    body { opacity: 1; transition: opacity 0.3s ease-in-out; }
+    img { max-width: 100%; height: auto; }
+  </style>
+
+  <!-- Defer loading non-critical CSS -->
+  <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+  </noscript>
+
+  <!-- Lazy Loading Images -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      let images = document.querySelectorAll("img[data-src]");
+      images.forEach(img => {
+        img.setAttribute("src", img.getAttribute("data-src"));
+        img.removeAttribute("data-src");
+      });
+    });
+  </script>
